@@ -57,7 +57,7 @@ def weather():
     data= { "place_name":res["location"]["name"],
             "temp":res["current"]["temp_c"],
             "day":res["location"]["localtime"],
-            "weather_description":res["current"]["condition"]["text"],
+            "weather_description":datetime.now().strftime("%d %B %Y %A"),
             "precip":res["current"]["precip_mm"],
             "humidity":res["current"]["humidity"], 
             "wind_speed":res["current"]["wind_kph"],
