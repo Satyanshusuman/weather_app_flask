@@ -56,8 +56,8 @@ def weather():
     temps=Forecast.forecast_temp(res)  
     data= { "place_name":res["location"]["name"],
             "temp":res["current"]["temp_c"],
-            "day":res["location"]["localtime"],
-            "weather_description":datetime.now().strftime("%d %B %Y %A"),
+            "day":datetime.now().strftime("%d %B %Y %A"),
+            "weather_description":res["current"]["condition"]["text"],
             "precip":res["current"]["precip_mm"],
             "humidity":res["current"]["humidity"], 
             "wind_speed":res["current"]["wind_kph"],
