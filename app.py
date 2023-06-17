@@ -22,14 +22,14 @@ class Forecast:
     def forecast_temp(res):
         temps=[]
         for i in range(1,9):
-            data=res["forecast"]["forecastday"][2]["day"]["avgtemp_c"]
+            data=res["forecast"]["forecastday"][i]["day"]["avgtemp_c"]
             temps.append(data)
         return temps
 
 
 @app.route("/",methods=["GET"])
 def home():
-    url="https://api.weatherapi.com/v1/forecast.json?key=bd3ef40472f44e2398795707231805&q=patna&days=9"
+    url="https://api.weatherapi.com/v1/forecast.json?key=e6c0bc983fd2410fa3b120407231706&q=patna&days=9"
     res=requests.get(url,headers=headers).json()
     img=Forecast.forecast_img(res)
     days=Forecast.forecast_day(res)
@@ -49,7 +49,7 @@ def home():
 def weather():
     if request.method=="POST" :
         city=request.form["city_name"]
-        url=f"https://api.weatherapi.com/v1/forecast.json?key=bd3ef40472f44e2398795707231805&q={city}&days=9"
+        url=f"https://api.weatherapi.com/v1/forecast.json?key=e6c0bc983fd2410fa3b120407231706&q={city}&days=9"
         res=requests.get(url,headers=headers).json()
     img=Forecast.forecast_img(res)
     days=Forecast.forecast_day(res)
